@@ -4,7 +4,6 @@ import turbinas.*
 object centralAtomicaBurns {
 	
 	var varillas = 0
-	var capacidad = 10
 	const ciudad = springfield
 	
 	method varillas(cantidadVarillas) {
@@ -22,8 +21,8 @@ object centralAtomicaBurns {
 
 object centralDeCarbonExBosque {
 
-	var varillas = 10
-	var capacidad = 10
+	
+	var capacidad = 0
 	const ciudad = springfield
 	
 	method capacidad(unaCapacidad){
@@ -42,8 +41,8 @@ object centralDeCarbonExBosque {
 
 object centralEolicaElSuspiro {
 	
-	var varillas = 10
-	var capacidad = 10
+	
+	
 	var turbinas = [turbinaDe02]
 	const ciudad = springfield
 	
