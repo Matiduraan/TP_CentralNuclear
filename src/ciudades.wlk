@@ -39,11 +39,11 @@ object springfield {
 	// reutilizarlo y que me busque SOLO la energia de las contaminantes pero no me salio
 	
 	method cubrioNecesidadEnergetica(necesidadEnergetica) {
-		return self.energiaProducidaEnLaCiudad() >= necesidadEnergetica
+		return self.energiaProducidaPorLasCentrales(centrales) >= necesidadEnergetica
 	}
 	
-	method energiaProducidaEnLaCiudad() {
-		return (centrales.map({central => central.produccionEnergetica()})).sum()
+	method energiaProducidaPorLasCentrales(centralesElectricas) {
+		return (centralesElectricas.map({central => central.produccionEnergetica()})).sum()
 	}
 				
 	method estaAlHorno(necesidadEnergetica) {
@@ -51,7 +51,7 @@ object springfield {
 	}
 		 
 	method energiaDeContaminantes() {
-		return ((self.centralesContaminantes()).map({central => central.produccionEnergetica()})).sum()
+		return self.energiaProducidaPorLasCentrales(self.centralesContaminantes())
 	}
 	
 	method aportanMasDeLaMitadNecesaria(necesidadEnergetica) { 
