@@ -3,9 +3,13 @@ import turbinas.*
 
 object centralAtomicaBurns {
 	
-	var varillas = 10
+	var varillas = 0
 	var capacidad = 10
 	const ciudad = springfield
+	
+	method varillas(cantidadVarillas) {
+		varillas = cantidadVarillas
+	}
 	
 	method produccionEnergetica() {
 		return 0.1*varillas
@@ -22,6 +26,10 @@ object centralDeCarbonExBosque {
 	var capacidad = 10
 	const ciudad = springfield
 	
+	method capacidad(unaCapacidad){
+		capacidad = unaCapacidad
+	}
+	
 	method produccionEnergetica() {
 		return 0.5 + capacidad * ciudad.riquezaDelSuelo()
 	}
@@ -29,6 +37,7 @@ object centralDeCarbonExBosque {
 	method esContaminante(){
 		return true
 	}
+	
 }
 
 object centralEolicaElSuspiro {
