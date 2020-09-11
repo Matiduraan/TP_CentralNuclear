@@ -1,0 +1,67 @@
+import ciudades.*
+import centrales.* 
+import region.*
+
+describe "contexto la produccion energetica de las centrales en springfield"{
+	const ciudad = springfield
+	
+	test "test la Central Atomica Burns produce,con 10 varillas, 1Mkwh" {
+		centralAtomicaBurns.varillas(10)
+		assert.that(ciudad.produccionEnergetica(centralAtomicaBurns) == 1)
+
+	}
+
+	test "test la Central de Carbon Ex-Bosque produce, con 20 toneladas, 18.5Mkwh" {
+		centralDeCarbonExBosque.capacidad(20)
+		assert.that(ciudad.produccionEnergetica(centralDeCarbonExBosque) == 18.5)
+	}
+	
+	test "test la Central Eolica El Suspiro produce 2Mkwh" {
+		
+		assert.that(ciudad.produccionEnergetica(centralEolicaElSuspiro) == 2)
+	}
+	
+}
+
+describe "contexto las centrales en springfield"{
+	const ciudad = springfield
+	
+	fixture{
+		centralAtomicaBurns.varillas(10)
+		centralDeCarbonExBosque.capacidad(20)
+		ciudad.centrales([centralAtomicaBurns,centralDeCarbonExBosque,centralEolicaElSuspiro])
+	}
+	
+	test "test las centrales contaminantes es una coleccion que solo tiene la central Ex-Bosque"{
+		
+		assert.that((ciudad.centralesContaminantes()).size() == 1)
+		
+		assert.that((ciudad.centralesContaminantes()).contains(centralDeCarbonExBosque))
+	}
+	
+	test "test las centrales cubrieron la necesidad energetica de 20Kwh"{
+		
+		assert.that(ciudad.cubrioNecesidadEnergetica(20))
+	}
+	
+	test "test springfield esta al horno si posee una necesidad energetica de 30Mkwh"{
+		
+		assert.that(ciudad.estaAlHorno(30))
+	}
+	
+}
+
+describe "contexto las ciudades en la region"{
+	const unaRegion = region
+	const ciudad = springfield
+	
+	fixture{
+		ciudad.centrales([centralAtomicaBurns,centralDeCarbonExBosque,centralEolicaElSuspiro])
+	}
+	
+	test "test las centrales mas productoras de la region es una coleccion con Ex-Bosque y la central hidroelectrica"{
+		assert.that((unaRegion.centralesMasProductoras()).size() == 2)
+		assert.that((unaRegion.centralesMasProductoras()).contains(centralDeCarbonExBosque))
+		assert.that((unaRegion.centralesMasProductoras()).contains(centralHidroElectrica))
+	}
+}
