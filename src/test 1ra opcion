@@ -2,7 +2,7 @@ import ciudades.*
 import centrales.* 
 import region.*
 
-describe "contexto la produccion energetica de las centrales en springfield"{
+describe "contexto las centrales en la region"{
 	
 	const ciudad = springfield
 	const unaRegion = region
