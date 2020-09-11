@@ -29,19 +29,35 @@ object springfield {
 	}
 	
 	/*
+	1ra opcion
 	method cubrioNecesidadEnergetica(necesidadEnergetica) {
 		var energiaProducida = (centrales.map({central => central.produccionEnergetica()})).sum()
 		return energiaProducida >= necesidadEnergetica
 	}
-	*/
 	
-	/* 
-	no entiendo la primer parte 
-	4.
-	method estaAlHorno() {
-		 || centrales.all({central => central.esContaminante()})
+	2da opcion
+	method cubrioNecesidadEnergetica(necesidadEnergetica) {
+		return self.energiaProducidaEnLaCiudad() >= necesidadEnergetica
+	}
+	
+	method energiaProducidaEnLaCiudad() {
+		return (centrales.map({central => central.produccionEnergetica()})).sum()
 	}
 	*/
+	
+	// VER 
+	
+	method estaAlHorno(necesidadEnergetica) {
+		return self.aportanMasDeLaMitadNecesaria(necesidadEnergetica) || centrales.all({central => central.esContaminante()})
+	}
+		 
+	method energiaDeContaminantes() {
+		return ((self.centralesContaminantes()).map({central => central.produccionEnergetica()})).sum()
+	}
+	
+	method aportanMasDeLaMitadNecesaria(necesidadEnergetica) { 
+		return self.energiaDeContaminantes() >= (1.5*necesidadEnergetica) 	
+	}
 	
 	method centralMasProductora() {
 		return centrales.max({central=>central.produccionEnergetica()})
