@@ -1,6 +1,6 @@
 object turbinaDe02 {
 	
-	method produccion(velocidadDelViento){
+	method produccionDeTurbina(velocidadDelViento) {
 		return 0.2 * velocidadDelViento
 	}
 }
