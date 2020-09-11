@@ -2,9 +2,8 @@ import centrales.*
 
 object springfield {
 	const velocidadDelViento = 10
-	const riquezaDelSuelo = 90
-	// const riquezaDelSuelo = 0.9
-	var centrales = [centralAtomicaBurns,centralDeCarbonExBosque,centralEolicaElSuspiro]
+	const riquezaDelSuelo = 0.9
+	var centrales = [centralEolicaElSuspiro]
 	
 	method riquezaDelSuelo() {
 		return riquezaDelSuelo
@@ -12,6 +11,10 @@ object springfield {
 	
 	method velocidadDelViento() {
 		return velocidadDelViento
+	}
+	
+	method centrales(unasCentrales){
+		centrales.addAll(unasCentrales)
 	}
 	
 	method produccionEnergetica(unaCentral) {
@@ -23,19 +26,17 @@ object springfield {
 		return centrales.filter({central=>central.esContaminante()})
 	}
 	
+	/* tu opcion
 	method cubreLasNecesidades(necesidad){
 		var energiaGenerada = centrales.map({central => central.produccionEnergetica()}).sum()
 		return necesidad <= energiaGenerada
 	}
+	*/
 	
-	/*
-	1ra opcion
-	method cubrioNecesidadEnergetica(necesidadEnergetica) {
-		var energiaProducida = (centrales.map({central => central.produccionEnergetica()})).sum()
-		return energiaProducida >= necesidadEnergetica
-	}
+	// mi opcion 
+	// (queria intentar hace un energiaProducidaEnLaCiudad mas generico que le pasaba el tipo de centrales a analizar para despues en el punto 4 
+	// reutilizarlo y que me busque SOLO la energia de las contaminantes pero no me salio
 	
-	2da opcion
 	method cubrioNecesidadEnergetica(necesidadEnergetica) {
 		return self.energiaProducidaEnLaCiudad() >= necesidadEnergetica
 	}
@@ -43,10 +44,7 @@ object springfield {
 	method energiaProducidaEnLaCiudad() {
 		return (centrales.map({central => central.produccionEnergetica()})).sum()
 	}
-	*/
-	
-	// VER 
-	
+				
 	method estaAlHorno(necesidadEnergetica) {
 		return self.aportanMasDeLaMitadNecesaria(necesidadEnergetica) || centrales.all({central => central.esContaminante()})
 	}
@@ -56,7 +54,7 @@ object springfield {
 	}
 	
 	method aportanMasDeLaMitadNecesaria(necesidadEnergetica) { 
-		return self.energiaDeContaminantes() >= (1.5*necesidadEnergetica) 	
+		return self.energiaDeContaminantes() >= (0.5*necesidadEnergetica) 	
 	}
 	
 	method centralMasProductora() {
@@ -72,7 +70,4 @@ object albuquerque {
 	method centralMasProductora () {
 		return central
 	}
-	
 }
-
-
