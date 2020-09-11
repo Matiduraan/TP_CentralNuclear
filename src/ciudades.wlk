@@ -1,5 +1,4 @@
-import Centrales.*
-
+import centrales.*
 
 object springfield {
 	const velocidadDelViento = 10
@@ -26,18 +25,7 @@ object springfield {
 	method centralesContaminantes() {
 		return centrales.filter({central=>central.esContaminante()})
 	}
-	
-	/* tu opcion
-	method cubreLasNecesidades(necesidad){
-		var energiaGenerada = centrales.map({central => central.produccionEnergetica()}).sum()
-		return necesidad <= energiaGenerada
-	}
-	*/
-	
-	// mi opcion 
-	// (queria intentar hace un energiaProducidaEnLaCiudad mas generico que le pasaba el tipo de centrales a analizar para despues en el punto 4 
-	// reutilizarlo y que me busque SOLO la energia de las contaminantes pero no me salio
-	
+		
 	method cubrioNecesidadEnergetica(necesidadEnergetica) {
 		return self.energiaProducidaPorLasCentrales(centrales) >= necesidadEnergetica
 	}

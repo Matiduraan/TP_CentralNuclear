@@ -1,10 +1,10 @@
+  
 import ciudades.*
 import turbinas.*
 
 object centralAtomicaBurns {
 	
 	var varillas = 0
-	const ciudad = springfield
 	
 	method varillas(cantidadVarillas) {
 		varillas = cantidadVarillas
@@ -23,12 +23,16 @@ object centralDeCarbonExBosque {
 
 	
 	var capacidad = 0
-	const ciudad = springfield
+	var ciudad = springfield
 	
 	method capacidad(unaCapacidad){
 		capacidad = unaCapacidad
 	}
 	
+	method ciudad(unaCiudad){
+		ciudad = unaCiudad
+	}
+		
 	method produccionEnergetica() {
 		return 0.5 + capacidad * ciudad.riquezaDelSuelo()
 	}
@@ -41,10 +45,8 @@ object centralDeCarbonExBosque {
 
 object centralEolicaElSuspiro {
 	
-	
-	
 	var turbinas = [turbinaDe02]
-	const ciudad = springfield
+	var ciudad = springfield
 	
 	method produccionEnergetica(){
 		return (turbinas.map({turbina => turbina.produccionDeTurbina(ciudad.velocidadDelViento())})).sum()
@@ -53,8 +55,12 @@ object centralEolicaElSuspiro {
 	method esContaminante(){
 		return false
 	}
+	
+	method ciudad(unaCiudad){
+		ciudad = unaCiudad
+	}
 }
 
 object centralHidroElectrica {
-	const ciudad = albuquerque
+
 }
