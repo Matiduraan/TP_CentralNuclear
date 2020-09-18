@@ -14,9 +14,7 @@ object centralAtomicaBurns {
 		return 0.1*varillas
 	}
 	
-	method esContaminante(){
-		return varillas > 20
-	}	
+	method esContaminante() = varillas > 20	
 }
 
 object centralDeCarbonExBosque {
@@ -37,10 +35,8 @@ object centralDeCarbonExBosque {
 		return 0.5 + capacidad * ciudad.riquezaDelSuelo()
 	}
 	
-	method esContaminante(){
-		return true
-	}
-	
+	method esContaminante() = true
+		
 }
 
 object centralEolicaElSuspiro {
@@ -52,10 +48,8 @@ object centralEolicaElSuspiro {
 		return turbinas.sum({turbina => turbina.produccionDeTurbina(ciudad.velocidadDelViento())})
 	}
 	
-	method esContaminante(){
-		return false
-	}
-	
+	method esContaminante() = false
+		
 	method ciudad(unaCiudad){
 		ciudad = unaCiudad
 	}
