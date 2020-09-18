@@ -15,23 +15,23 @@ describe "contexto las centrales en la region"{
 	
 	test "test la Central Atomica Burns produce,con 10 varillas, 1Mkwh en springfield" {
 		
-		assert.that(ciudad.produccionEnergetica(centralAtomicaBurns) == 1)
+		assert.equals(1,ciudad.produccionEnergetica(centralAtomicaBurns)) 
 
 	}
 
 	test "test la Central de Carbon Ex-Bosque produce, con 20 toneladas, 18.5Mkwh" {
 		
-		assert.that(ciudad.produccionEnergetica(centralDeCarbonExBosque) == 18.5)
+		assert.equals(18.5,ciudad.produccionEnergetica(centralDeCarbonExBosque))
 	}
 	
 	test "test la Central Eolica El Suspiro produce 2Mkwh" {
 		
-		assert.that(ciudad.produccionEnergetica(centralEolicaElSuspiro) == 2)
+		assert.equals(2,ciudad.produccionEnergetica(centralEolicaElSuspiro))
 	}
 	
 	test "test las centrales contaminantes es una coleccion que solo tiene la central Ex-Bosque"{
 		
-		assert.that((ciudad.centralesContaminantes()).size() == 1)
+		assert.equals(1,(ciudad.centralesContaminantes()).size())
 		
 		assert.that((ciudad.centralesContaminantes()).contains(centralDeCarbonExBosque))
 	}
@@ -47,7 +47,7 @@ describe "contexto las centrales en la region"{
 	}
 	
 	test "test las centrales mas productoras de la region es una coleccion con Ex-Bosque y la central hidroelectrica"{
-		assert.that((unaRegion.centralesMasProductoras()).size() == 2)
+		assert.equals(2,(unaRegion.centralesMasProductoras()).size())
 		assert.that((unaRegion.centralesMasProductoras()).contains(centralDeCarbonExBosque))
 		assert.that((unaRegion.centralesMasProductoras()).contains(centralHidroElectrica))
 	}
