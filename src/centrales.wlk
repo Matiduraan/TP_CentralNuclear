@@ -10,7 +10,7 @@ object centralAtomicaBurns {
 		varillas = cantidadVarillas
 	}
 	
-	method produccionEnergetica() {
+	method produccionEnergetica(unaCiudad) {
 		return 0.1*varillas
 	}
 	
@@ -21,7 +21,6 @@ object centralDeCarbonExBosque {
 
 	
 	var capacidad = 0
-	var ciudad = springfield
 	
 	method capacidad(unaCapacidad){
 		capacidad = unaCapacidad
@@ -31,8 +30,8 @@ object centralDeCarbonExBosque {
 		ciudad = unaCiudad
 	}
 		
-	method produccionEnergetica() {
-		return 0.5 + capacidad * ciudad.riquezaDelSuelo()
+	method produccionEnergetica(unaCiudad) {
+		return 0.5 + capacidad * unaCiudad.riquezaDelSuelo()
 	}
 	
 	method esContaminante() = true
@@ -42,10 +41,9 @@ object centralDeCarbonExBosque {
 object centralEolicaElSuspiro {
 	
 	var turbinas = turbinaDe02
-	var ciudad = springfield
-	
-	method produccionEnergetica(){
-		return turbinas.sum({turbina => turbina.produccionDeTurbina(ciudad.velocidadDelViento())})
+		
+	method produccionEnergetica(unaCiudad){
+		return turbinas.sum({turbina => turbina.produccionDeTurbina(unaCiudad.velocidadDelViento())})
 	}
 	
 	method esContaminante() = false
@@ -57,7 +55,7 @@ object centralEolicaElSuspiro {
 
 object centralHidroElectrica {
 
-	method produccionEnergetica() {
+	method produccionEnergetica(unaCiudad) {
 	}
 
 	method esContaminante() {
