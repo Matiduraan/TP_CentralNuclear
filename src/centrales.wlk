@@ -49,7 +49,7 @@ object centralEolicaElSuspiro {
 	var ciudad = springfield
 	
 	method produccionEnergetica(){
-		return (turbinas.map({turbina => turbina.produccionDeTurbina(ciudad.velocidadDelViento())})).sum()
+		return turbinas.sum({turbina => turbina.produccionDeTurbina(ciudad.velocidadDelViento())})
 	}
 	
 	method esContaminante(){
