@@ -57,4 +57,9 @@ object centralEolicaElSuspiro {
 
 object centralHidroElectrica {
 
+	method produccionEnergetica() {
+	}
+
+	method esContaminante() {
+	}
 }
