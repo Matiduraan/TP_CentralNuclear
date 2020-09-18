@@ -45,7 +45,7 @@ object centralDeCarbonExBosque {
 
 object centralEolicaElSuspiro {
 	
-	var turbinas = [turbinaDe02]
+	var turbinas = turbinaDe02
 	var ciudad = springfield
 	
 	method produccionEnergetica(){
