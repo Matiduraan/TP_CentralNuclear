@@ -5,13 +5,9 @@ object springfield {
 	const riquezaDelSuelo = 0.9
 	var centrales = []
 	
-	method riquezaDelSuelo() {
-		return riquezaDelSuelo
-	}
-	
-	method velocidadDelViento() {
-		return velocidadDelViento
-	}
+	method riquezaDelSuelo() = riquezaDelSuelo
+
+	method velocidadDelViento() = velocidadDelViento
 	
 	method centrales(unasCentrales){
 		centrales.addAll(unasCentrales)
@@ -19,7 +15,7 @@ object springfield {
 	
 	method produccionEnergetica(unaCentral) {
 		centrales.contains(unaCentral)
-		return unaCentral.produccionEnergetica()
+		return unaCentral.produccionEnergetica(self)
 	}
 	
 	method centralesContaminantes() {
@@ -56,7 +52,6 @@ object albuquerque {
 	const caudalRio = 150
 	var central = centralHidroElectrica
 
-	method centralMasProductora () {
-		return central
-	}
+	method centralMasProductora () = central
+
 }
