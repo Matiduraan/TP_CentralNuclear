@@ -36,15 +36,7 @@ describe "contexto las centrales en la region"{
 		assert.that((ciudad.centralesContaminantes()).contains(centralDeCarbonExBosque))
 	}
 	
-	test "test las centrales cubrieron la necesidad energetica de 20Kwh"{
-		
-		assert.that(ciudad.cubrioNecesidadEnergetica(20))
-	}
-	
-	test "test springfield esta al horno si posee una necesidad energetica de 30Mkwh"{
-		
-		assert.that(ciudad.estaAlHorno(30))
-	}
+
 	
 	test "test las centrales mas productoras de la region es una coleccion con Ex-Bosque y la central hidroelectrica"{
 		assert.equals(2,(unaRegion.centralesMasProductoras()).size())
@@ -54,4 +46,42 @@ describe "contexto las centrales en la region"{
 	
 }
 
+describe "Las Springfield tiene una necesidad energetica de 20Kwh"{
+	
+	
+	const ciudad = springfield
+	const unaRegion = region
+	
+	fixture{
+		centralAtomicaBurns.varillas(10)
+		centralDeCarbonExBosque.capacidad(20)
+		ciudad.necesidadEnergetica(20)
+		ciudad.centrales([centralAtomicaBurns,centralDeCarbonExBosque,centralEolicaElSuspiro])
+	}
+	
+	test "test las centrales cubrieron la necesidad energetica de 20Kwh"{
+		
+		assert.that(ciudad.cubrioNecesidadEnergetica())
+	}
+}
+
+
+describe "Las Springfield tiene una necesidad energetica de 30Kwh"{
+	
+	
+	const ciudad = springfield
+	const unaRegion = region
+	
+	fixture{
+		centralAtomicaBurns.varillas(10)
+		centralDeCarbonExBosque.capacidad(20)
+		ciudad.necesidadEnergetica(30)
+		ciudad.centrales([centralAtomicaBurns,centralDeCarbonExBosque,centralEolicaElSuspiro])
+	}
+	
+	test "test springfield esta al horno si posee una necesidad energetica de 30Mkwh"{
+		
+		assert.that(ciudad.estaAlHorno())
+	}
+}
 
