@@ -26,9 +26,6 @@ object centralDeCarbonExBosque {
 		capacidad = unaCapacidad
 	}
 	
-	method ciudad(unaCiudad){
-		ciudad = unaCiudad
-	}
 		
 	method produccionEnergetica(unaCiudad) {
 		return 0.5 + capacidad * unaCiudad.riquezaDelSuelo()
@@ -40,17 +37,15 @@ object centralDeCarbonExBosque {
 
 object centralEolicaElSuspiro {
 	
-	var turbinas = turbinaDe02
+	var turbinas = [turbinaDe02]
 		
 	method produccionEnergetica(unaCiudad){
-		return turbinas.sum({turbina => turbina.produccionDeTurbina(unaCiudad.velocidadDelViento())})
+		return turbinas.map({turbina => turbina.produccionDeTurbina(unaCiudad.velocidadDelViento())}).sum()
 	}
 	
 	method esContaminante() = false
 		
-	method ciudad(unaCiudad){
-		ciudad = unaCiudad
-	}
+
 }
 
 object centralHidroElectrica {
