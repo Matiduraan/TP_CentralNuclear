@@ -46,7 +46,7 @@ describe "contexto las centrales en la region"{
 	
 }
 
-describe "Las Springfield tiene una necesidad energetica de 20Kwh"{
+describe "Springfield tiene una necesidad energetica de 20Kwh"{
 	
 	
 	const ciudad = springfield
@@ -66,7 +66,7 @@ describe "Las Springfield tiene una necesidad energetica de 20Kwh"{
 }
 
 
-describe "Las Springfield tiene una necesidad energetica de 30Kwh"{
+describe "Springfield tiene una necesidad energetica de 30Kwh"{
 	
 	
 	const ciudad = springfield
